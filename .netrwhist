@@ -1,0 +1,4 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/sergio/Dropbox/Proyectos/WorldHistoryTimeline/Get_data/Sources/Wikipedia/Wiki_exhaustive_read/Test_files'
+let g:netrw_dirhist_1='/Users/sergio/Dropbox/Proyectos/Petisu/Corrección_1/ML'

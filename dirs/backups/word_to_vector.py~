@@ -1,0 +1,58 @@
+
+import numpy as np
+import menu_reader
+
+def define_vector_size():
+    """Reads all menu products and finds the largest word on it.
+    That max length will be the size of the vectors used for ML.
+
+    This function is mend to be run only once.
+    """
+    vector_size = 0
+    menu = menu_reader.read_menu()
+    # list of lenght of products in menu
+    length_of_products = [length(product) for products in menu.values() for product in products]
+    print(leng
+    
+def word_to_vector(word, vector_size):
+    """
+    Reads a word and returns a list of integers
+    for it to be used as a feature in ML
+
+    The input word NEEDS to be lower case.
+
+    The vector_size is the max length of all considered words.
+    """
+    # first a set a letter value
+    char_value = {}
+    char_set = "abcdefghijklmnñopqrstuvwxyz áéíóú"
+    for index, char in enumerate(char_set):
+        char_value[char] = index + 1
+
+    word_vec = []
+    # set the numeric value of each character
+    for c in word:
+        word_vec.append(char_value[c])
+    word_vec += list(np.zeros(vector_size - len(word_vec)))
+    return word_vec
+
+def menu_to_int():
+    """Reads all the menu and returns all the products
+    to intiger values that will be used as the target y.
+    """
+    # the value for each product is just a consecutive int
+    int_value = 0
+    # dictionary with all the prodcuts and it int value
+    menu_int_values = {}
+    # read all the products on the menu
+    menu = menu_reader.read_menu()
+    for products in menu.values():
+        for product in products:
+            menu_int_values[product] = int_value
+            int_value += 1
+    #[print(product, value) for product, value in menu_int_values.items()]
+    return menu_int_values
+    
+if __name__ == "__main__":
+    #word_to_feature("example", 12) 
+    menu_to_int()
